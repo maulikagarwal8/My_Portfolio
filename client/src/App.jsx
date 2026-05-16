@@ -4,7 +4,7 @@ import Home from './pages/home';
 
 function App() {
   useEffect(() => {
-    const BACKEND_URL = "https://onrender.com";
+    const BACKEND_URL = "https://maulik-personal-portfolio-backend.onrender.com";
     const wakeUpBackend = async () => {
       try {
         await fetch(`${BACKEND_URL}/api/ping`);
