@@ -10,14 +10,13 @@ router.post('/', async (req, res) => {
 
   try{
     const contact = await Contact.create({ name, email, message });
-    res.status(201).json({ message: 'Contact stored', contactId: contact._id });
     try{
       await sendContactEmail({name,email,message});
-      res.json({ success: true, message: 'Email sent to owner!' })
+      res.json({ success: true, message: 'Contact stored and Email sent to owner!',contactId: contact._id })
     }
     catch (err) {
       console.error('Error sending email.', err)
-      res.status(500).json({ error: 'Failed to send email to owner' })
+      res.status(500).json({ error: 'Contact stored but Failed to send email to owner' })
     }
   }
   catch (err) {
